@@ -4,13 +4,14 @@ namespace Modul2HomeWork6.Models
 {
     public class CarNumber
     {
-        private static string[] _regionCode = new string[]
+        private const string _allChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        private static readonly string[] _regionCode = new string[]
         {
             "AA", "Ka", "AI", "KI", "AB", "KB", "AC", "KC", "AE", "KE", "AH", "KH", "AM", "KM", "AO", "KO", "AP", "KP", "AT", "KT", "BA", "HA", "BB", "HB", "BC", "HC", "CH",
             "BE", "HE", "BH", "HH", "BI", "HI", "BK", "HK", "BM", "HM", "BO", "HO", "AX", "KX", "BT", "HT", "BX", "HX", "CA", "IA", "CB", "IB", "CE", "IE", "AK", "KK", "IH"
         };
 
-        private static string _allChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public CarNumber()
         {
             Number = GetRandomNumber();

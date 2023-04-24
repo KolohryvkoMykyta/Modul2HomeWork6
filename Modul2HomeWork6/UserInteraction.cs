@@ -23,7 +23,8 @@ namespace Modul2HomeWork6
 
         public static FilterType AskForFilterType()
         {
-            Console.WriteLine("\nChoose by what criteria to sort the taxi cars: (press 1, 2 or 3)\n1 Sort by Class\n2 Sort by Body Type\n3 Sort by Number");
+            Console.WriteLine("\nChoose by what criteria to sort the taxi cars: (press 1, 2 or 3)\n1 Sort by Class\n2 Sort by Body Type\n3 Sort by Number\n" +
+                "4 Sort by FuelConsumption\n5 Sort by Price");
 
             while (true)
             {
@@ -37,6 +38,10 @@ namespace Modul2HomeWork6
                         return FilterType.BodyType;
                     case '3':
                         return FilterType.Number;
+                    case '4':
+                        return FilterType.FuelConsumption;
+                    case '5':
+                        return FilterType.Price;
                     default:
                         Console.WriteLine("\nIncorrect input! Press 1, 2 or 3!");
                         break;
@@ -94,9 +99,61 @@ namespace Modul2HomeWork6
 
         public static string? AskForTaxiCarNumber()
         {
-            Console.Write("Write the number of the car you want to find (example: 'AA0001AX'):");
+            Console.Write("\nWrite the number of the car you want to find (example: 'AA0001AX'): ");
 
             return Console.ReadLine();
+        }
+
+        public static (decimal, decimal) AskForFuelConsumption()
+        {
+            decimal minValue, maxValue;
+            bool isCorrectInput;
+
+            Console.Write("\nInput the minimum fuel consumption value: ");
+            isCorrectInput = decimal.TryParse(Console.ReadLine(), out minValue);
+
+            while (!isCorrectInput || minValue <= 0)
+            {
+                Console.Write("Incorect input! Please input number greater than 0: ");
+                isCorrectInput = decimal.TryParse(Console.ReadLine(), out minValue);
+            }
+
+            Console.Write("\nInput the maximum fuel consumption value: ");
+            isCorrectInput = decimal.TryParse(Console.ReadLine(), out maxValue);
+
+            while (!isCorrectInput || maxValue < minValue)
+            {
+                Console.Write($"Incorect input! Please input number greater than {minValue}: ");
+                isCorrectInput = decimal.TryParse(Console.ReadLine(), out maxValue);
+            }
+
+            return (minValue, maxValue);
+        }
+
+        public static (int, int) AskForPrice()
+        {
+            int minValue, maxValue;
+            bool isCorrectInput;
+
+            Console.Write("\nInput the minimum price value: ");
+            isCorrectInput = int.TryParse(Console.ReadLine(), out minValue);
+
+            while (!isCorrectInput || minValue <= 0)
+            {
+                Console.Write("Incorect input! Please input integer greater than 0: ");
+                isCorrectInput = int.TryParse(Console.ReadLine(), out minValue);
+            }
+
+            Console.Write("\nInput the maximum price value: ");
+            isCorrectInput = int.TryParse(Console.ReadLine(), out maxValue);
+
+            while (!isCorrectInput || maxValue < minValue)
+            {
+                Console.Write($"Incorect input! Please input integer greater {minValue}: ");
+                isCorrectInput = int.TryParse(Console.ReadLine(), out maxValue);
+            }
+
+            return (minValue, maxValue);
         }
 
         public static int AskForActionForEmptyArray()

@@ -49,6 +49,36 @@ namespace Modul2HomeWork6.Models
             return counter;
         }
 
+        public static int GetTaxiCount(this TaxiCar[] cars, decimal minValue, decimal maxValue)
+        {
+            int counter = 0;
+
+            foreach (var car in cars)
+            {
+                if (car.FuelConsumption >= minValue && car.FuelConsumption <= maxValue)
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
+        }
+
+        public static int GetTaxiCount(this TaxiCar[] cars, int minValue, int maxValue)
+        {
+            int counter = 0;
+
+            foreach (var car in cars)
+            {
+                if (car.Price >= minValue && car.Price <= maxValue)
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
+        }
+
         public static TaxiCar[] FilterTaxi(this TaxiCar[] cars, CarBodyType type)
         {
             TaxiCar[] result = new TaxiCar[cars.GetTaxiCount(type)];
@@ -91,6 +121,40 @@ namespace Modul2HomeWork6.Models
             foreach (var car in cars)
             {
                 if (car.Number.Number == carNunber)
+                {
+                    result[counter] = car;
+                    counter++;
+                }
+            }
+
+            return result;
+        }
+
+        public static TaxiCar[] FilterTaxi(this TaxiCar[] cars, decimal minValue, decimal maxValue)
+        {
+            TaxiCar[] result = new TaxiCar[cars.GetTaxiCount(minValue, maxValue)];
+            var counter = 0;
+
+            foreach (var car in cars)
+            {
+                if (car.FuelConsumption >= minValue && car.FuelConsumption <= maxValue)
+                {
+                    result[counter] = car;
+                    counter++;
+                }
+            }
+
+            return result;
+        }
+
+        public static TaxiCar[] FilterTaxi(this TaxiCar[] cars, int minValue, int maxValue)
+        {
+            TaxiCar[] result = new TaxiCar[cars.GetTaxiCount(minValue, maxValue)];
+            var counter = 0;
+
+            foreach (var car in cars)
+            {
+                if (car.Price >= minValue && car.Price <= maxValue)
                 {
                     result[counter] = car;
                     counter++;

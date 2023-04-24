@@ -4,6 +4,8 @@
     {
         Class,
         BodyType,
-        Number
+        Number,
+        FuelConsumption,
+        Price
     }
 }

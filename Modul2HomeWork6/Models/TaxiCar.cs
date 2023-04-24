@@ -19,7 +19,7 @@ namespace Modul2HomeWork6.Models
 
         public int CompareTo(object? obj)
         {
-            return Price.CompareTo(((TaxiCar)obj).Price);
+            return FuelConsumption.CompareTo(((TaxiCar)obj).FuelConsumption);
         }
 
         public void Print()

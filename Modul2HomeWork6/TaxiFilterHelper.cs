@@ -90,6 +90,8 @@ namespace Modul2HomeWork6
                 FilterType.Class => FilterByTaxiClass(),
                 FilterType.BodyType => FilterByTaxiCarBodyType(),
                 FilterType.Number => FilterByTaxiCarNumber(),
+                FilterType.FuelConsumption => FilterByFuelConsumtion(),
+                FilterType.Price => FilterByPrice(),
                 _ => new TaxiCar[0]
             };
         }
@@ -113,6 +115,20 @@ namespace Modul2HomeWork6
             var number = UserInteraction.AskForTaxiCarNumber();
 
             return _taxiCars.FilterTaxi(number);
+        }
+
+        private TaxiCar[] FilterByFuelConsumtion()
+        {
+            var fuelConsumption = UserInteraction.AskForFuelConsumption();
+
+            return _taxiCars.FilterTaxi(fuelConsumption.Item1, fuelConsumption.Item2);
+        }
+
+        private TaxiCar[] FilterByPrice()
+        {
+            var price = UserInteraction.AskForPrice();
+
+            return _taxiCars.FilterTaxi(price.Item1, price.Item2);
         }
 
         private void PrintTaxiCars()
